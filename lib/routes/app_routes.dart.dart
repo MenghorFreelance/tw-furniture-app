@@ -1,35 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tem/features/auth/screens/login_screen.dart';
+import 'package:flutter_tem/routes/bottom_bar.dart';
 import 'package:go_router/go_router.dart';
-
 import '../features/auth/screens/home_screen.dart';
-import '../features/auth/screens/second_screen.dart';
+import '../features/main/screens/browse_screen.dart';
+import '../features/order/screens/order_screen.dart';
+import '../features/setting/screens/profile_screen.dart';
 
-// This class will handle all route-related logic for the app
 class AppRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/home',
     routes: [
-      // Home Screen Route
-      GoRoute(
-        path: '/',
-        builder: (context, state) {
-          return const HomeScreen();
+      // ShellRoute to manage bottom navigation
+      ShellRoute(
+        builder: (context, state, child) {
+          return BottomBar(child: child);
         },
         routes: [
-          // Second Screen Route
           GoRoute(
-            path: '/second',
-            builder: (context, state) {
-              return const SecondScreen();
-            },
+            path: '/home',
+            builder: (context, state) => const HomeScreen(),
+          ),
+          GoRoute(
+            path: '/browse',
+            builder: (context, state) => const BrowseScreen(),
+          ),
+          GoRoute(
+            path: '/order',
+            builder: (context, state) => const OrderScreen(),
+          ),
+          GoRoute(
+            path: '/profile',
+            builder: (context, state) => const ProfileScreen(),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
       ),
     ],
     errorBuilder: (context, state) {
       return const Scaffold(
         body: Center(child: Text('Page not found')),
       );
+    },
+    redirect: (context, state) {
+      // if the user is not logged in, they need to login
+      String? token;
+      if (token != null) {
+        return '/login';
+      }
+
+      return null;
     },
   );
 }

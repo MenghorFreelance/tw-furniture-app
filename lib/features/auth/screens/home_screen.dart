@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Screen')),
+      // appBar: AppBar(title: const Text('Home Screen')),
       body: Obx(() {
         // Check if loading is true
         if (photoController.isLoading.value) {
