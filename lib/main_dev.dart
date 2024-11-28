@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tem/utils/api/dio_client.dart';
 
-import 'global.dart';
 import 'my_app.dart';
 
 void main() {
-  Global.url = "Ach";
+  DioClient.setup();
   runApp(const MyApp());
 }

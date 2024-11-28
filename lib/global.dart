@@ -1,3 +1,1 @@
-class Global {
-  static String url = "Hello";
-}
+class Global {}
