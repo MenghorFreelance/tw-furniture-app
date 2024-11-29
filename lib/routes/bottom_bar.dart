@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomBar extends StatefulWidget {
@@ -11,7 +12,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 3;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -46,6 +47,7 @@ class _BottomBarState extends State<BottomBar> {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.white,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

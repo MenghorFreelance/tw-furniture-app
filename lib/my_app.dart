@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:get/get.dart';
 
 import 'bindings/initial_binding.dart';
@@ -10,6 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData(
+        primaryColor: AppColors.white,
+        // backgroundColor: Colors.grey[200],
+        scaffoldBackgroundColor: AppColors.body,
+      ),
       debugShowCheckedModeBanner: true,
       initialBinding: InitialBinding(),
       home: Router(
