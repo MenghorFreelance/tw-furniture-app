@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "886455820728",
+    "project_id": "app-pro-221dd",
+    "storage_bucket": "app-pro-221dd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886455820728:android:52dcc870e49f3e04e2af4d",
+        "android_client_info": {
+          "package_name": "com.menghor.twfurniturekh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBIzIrG81o7jMpCUloDq7LH89JdGsBY-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -50,7 +50,7 @@ class AppRoutes {
       String? token;
 
       // return '/login';
-      return null;
+      return "/login";
     },
   );
 }

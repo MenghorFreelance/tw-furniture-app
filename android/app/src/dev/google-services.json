@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "557744721846",
+    "project_id": "app-dev-faa5c",
+    "storage_bucket": "app-dev-faa5c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557744721846:android:59de08d11d7144230bbb17",
+        "android_client_info": {
+          "package_name": "com.menghor.twfurniturekh.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtzD_ZZpEOnw9d1dZxOomQnow5mFkNeZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
