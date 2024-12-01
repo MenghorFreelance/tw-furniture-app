@@ -15,7 +15,7 @@ class BrowseScreen extends StatefulWidget {
 
 class _BrowseScreenState extends State<BrowseScreen>
     with SingleTickerProviderStateMixin {
-  TabController? _tabController;
+  late TabController _tabController;
   List<Map<String, dynamic>> _tabs = [];
   int _activeTabIndex = 0;
   final List<String> itemsPro =
@@ -27,28 +27,11 @@ class _BrowseScreenState extends State<BrowseScreen>
     _initializeTabs();
   }
 
+  // Simulate API call to fetch tabs and their content
   Future<List<Map<String, dynamic>>> _fetchTabsFromApi() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
 
     return [
-      {
-        'title': 'Living Room',
-        'content': fetchTabContent('Living Room'),
-        'filter': 'Filter for Living Room',
-        'icon': const ImageBorderFilter(),
-      },
-      {
-        'title': 'Kitchen',
-        'content': fetchTabContent('Kitchen'),
-        'filter': 'Filter for Kitchen',
-        'icon': const ImageBorderFilter(),
-      },
-      {
-        'title': 'Bedroom',
-        'content': fetchTabContent('Bedroom'),
-        'filter': 'Filter for Bedroom',
-        'icon': const ImageBorderFilter(),
-      },
       {
         'title': 'Living Room',
         'content': fetchTabContent('Living Room'),
@@ -71,7 +54,7 @@ class _BrowseScreenState extends State<BrowseScreen>
   }
 
   Future<Widget> fetchTabContent(String tabName) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2)); // Simulate content delay
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -121,20 +104,18 @@ class _BrowseScreenState extends State<BrowseScreen>
 
   void _initializeTabs() async {
     List<Map<String, dynamic>> tabs = await _fetchTabsFromApi();
-    if (mounted) {
-      setState(() {
-        _tabs = tabs;
-        _tabController = TabController(length: tabs.length, vsync: this);
-        _tabController!.addListener(_onTabChanged);
-        _applyFilterForActiveTab(0);
-      });
-    }
+    setState(() {
+      _tabs = tabs;
+      _tabController = TabController(length: tabs.length, vsync: this);
+      _tabController.addListener(_onTabChanged);
+      _applyFilterForActiveTab(0); // Apply the initial filter
+    });
   }
 
   void _onTabChanged() {
-    if (mounted && _tabController!.index != _activeTabIndex) {
+    if (_tabController.index != _activeTabIndex) {
       setState(() {
-        _activeTabIndex = _tabController!.index;
+        _activeTabIndex = _tabController.index;
       });
       _applyFilterForActiveTab(_activeTabIndex);
     }
@@ -149,7 +130,7 @@ class _BrowseScreenState extends State<BrowseScreen>
 
   @override
   void dispose() {
-    _tabController?.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -173,8 +154,8 @@ class _BrowseScreenState extends State<BrowseScreen>
               ? const SizedBox()
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: _tabController !=
-                          null // Check if TabController is initialized
+                  child: _tabController.length >
+                          0 // Check if tabController is initialized
                       ? TabBar(
                           isScrollable: true,
                           controller: _tabController,

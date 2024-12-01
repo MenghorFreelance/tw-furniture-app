@@ -13,7 +13,7 @@ class CashImage extends StatelessWidget {
     required this.imageUrl,
     this.width = 100,
     this.height = 100,
-    this.borderRadius = 8.0,
+    this.borderRadius = 4.0,
     this.fit = BoxFit.cover,
   });
 

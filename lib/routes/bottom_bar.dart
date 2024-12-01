@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tem/features/main/screens/browse_screen.dart';
+import 'package:flutter_tem/features/main/screens/home_screen.dart';
+import 'package:flutter_tem/features/order/screens/order_screen.dart';
+import 'package:flutter_tem/features/setting/screens/profile_screen.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,7 +16,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -38,7 +42,28 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
+      body: Navigator(
+        key: GlobalKey<
+            NavigatorState>(), // Key for Navigator to manage tab screens
+        onGenerateRoute: (RouteSettings settings) {
+          return MaterialPageRoute(
+            builder: (context) {
+              switch (_selectedIndex) {
+                case 0:
+                  return const HomeScreen();
+                case 1:
+                  return const BrowseScreen();
+                case 2:
+                  return const OrderScreen();
+                case 3:
+                  return const ProfileScreen();
+                default:
+                  return const HomeScreen();
+              }
+            },
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

@@ -9,7 +9,7 @@ import '../features/setting/screens/profile_screen.dart';
 
 class AppRoutes {
   static final GoRouter router = GoRouter(
-    initialLocation: '/profile',
+    initialLocation: '/home',
     routes: [
       // ShellRoute to manage bottom navigation
       ShellRoute(
@@ -47,10 +47,9 @@ class AppRoutes {
     },
     redirect: (context, state) {
       // if the user is not logged in, they need to login
-      String? token;
 
       // return '/login';
-      return "/login";
+      return null;
     },
   );
 }

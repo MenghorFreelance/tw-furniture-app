@@ -11,6 +11,9 @@ class AppColors {
   static const Color fillPrimary = Color(0xFF57823D);
   static const Color orange = Color(0xFFE9932C);
 
+  static const Color red = Colors.red;
+  static const Color green = Color(0xFF65C809);
+
   static const LinearGradient customGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
