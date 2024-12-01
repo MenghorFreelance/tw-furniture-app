@@ -15,6 +15,17 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColors.white,
         // backgroundColor: Colors.grey[200],
         scaffoldBackgroundColor: AppColors.body,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              vertical: 0,
+              horizontal: 0,
+            ), // Padding
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4), // Rounded corners
+            ),
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: true,
       initialBinding: InitialBinding(),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tem/components/image/carousel_slider.dart';
 import 'package:flutter_tem/components/image/cash_image.dart';
 import 'package:flutter_tem/features/main/widgets/image_with_border.dart';
 import 'package:flutter_tem/features/main/widgets/search_with_card.dart';
-import 'package:flutter_tem/utils/image/app_image.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:flutter_tem/utils/theme/app_text.dart';
 
