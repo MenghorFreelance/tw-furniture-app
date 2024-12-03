@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tem/features/main/screens/browse_screen.dart';
 import 'package:flutter_tem/features/main/screens/home_screen.dart';
+import 'package:flutter_tem/features/main/screens/search_screen.dart';
 import 'package:flutter_tem/features/order/screens/order_screen.dart';
 import 'package:flutter_tem/features/setting/screens/profile_screen.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
@@ -16,7 +17,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -50,7 +51,7 @@ class _BottomBarState extends State<BottomBar> {
             builder: (context) {
               switch (_selectedIndex) {
                 case 0:
-                  return const HomeScreen();
+                  return const SearchScreen();
                 case 1:
                   return const BrowseScreen();
                 case 2:

@@ -9,4 +9,5 @@ class AppImage {
   static const String order = 'assets/image/home/order.png';
   static const String telegram = 'assets/image/home/telegram.png';
   static const String chat = 'assets/image/home/chat.png';
+  static const String emthy = 'assets/image/home/emthy.png';
 }
