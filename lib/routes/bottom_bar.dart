@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tem/features/main/screens/browse_screen.dart';
+import 'package:flutter_tem/features/main/screens/google_map_screen.dart';
 import 'package:flutter_tem/features/main/screens/home_screen.dart';
 import 'package:flutter_tem/features/main/screens/search_screen.dart';
 import 'package:flutter_tem/features/order/screens/order_screen.dart';
@@ -51,7 +52,7 @@ class _BottomBarState extends State<BottomBar> {
             builder: (context) {
               switch (_selectedIndex) {
                 case 0:
-                  return const SearchScreen();
+                  return const HomeScreen();
                 case 1:
                   return const BrowseScreen();
                 case 2:

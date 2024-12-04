@@ -3,6 +3,7 @@ class AppImage {
   static const String search = 'assets/image/home/search.svg';
   static const String heart = 'assets/image/home/heart.svg';
   static const String support = 'assets/image/home/spp.svg';
+  static const String discount = 'assets/image/home/discount.svg';
 
   // png
   static const String loginBg = 'assets/image/login.png';

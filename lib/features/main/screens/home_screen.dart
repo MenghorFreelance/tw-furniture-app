@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tem/components/image/carousel_slider.dart';
 import 'package:flutter_tem/components/image/cash_image.dart';
 import 'package:flutter_tem/features/main/widgets/image_with_border.dart';
 import 'package:flutter_tem/features/main/widgets/search_with_card.dart';
+import 'package:flutter_tem/utils/image/app_image.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:flutter_tem/utils/theme/app_text.dart';
 
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen>
                       SizedBox(
                         height: 16,
                       ),
-                      CarouselSlider(),
+                      ImageCarouselSlider(),
                     ],
                   ),
                 ),
@@ -119,6 +121,114 @@ class _HomeScreenState extends State<HomeScreen>
               height: 8,
             ),
             Container(
+              padding: const EdgeInsets.all(16),
+              color: AppColors.white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Event / Promotion",
+                    style: AppText.title(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    "Duration: 10 Oct - 31 Nov 2024",
+                    style: AppText.title(
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // Number of items per row
+                      crossAxisSpacing: 16.0, // Horizontal space between items
+                      mainAxisSpacing: 16.0,
+                      mainAxisExtent: 163,
+                    ),
+                    shrinkWrap: true, // Shrinks the grid to fit its content
+                    padding: EdgeInsets.zero, // No padding around the grid
+                    physics:
+                        const NeverScrollableScrollPhysics(), // Disables scrolling
+                    itemCount: items.length, // Total number of items
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.black.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Column(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: CashImage(
+                                width: double.infinity,
+                                height: 96,
+                                borderRadius: 4,
+                                imageUrl:
+                                    "https://picsum.photos/1200/1300?image=1",
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              width: double.infinity,
+                              height: 24,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: AppColors.red,
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(AppImage.discount),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    "50%",
+                                    style: AppText.title(
+                                      fontSize: 12,
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const Spacer(),
+                            Text(
+                              "Only 5 left",
+                              style: AppText.title(
+                                fontSize: 12,
+                                color: AppColors.black.withOpacity(
+                                  0.5,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Container(
               color: AppColors.white,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -140,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen>
                         underline: true,
                         underlineColor: AppColors.primary,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

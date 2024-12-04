@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tem/features/auth/screens/login_screen.dart';
+import 'package:flutter_tem/features/main/screens/google_map_screen.dart';
 import 'package:flutter_tem/features/main/screens/home_screen.dart';
 import 'package:flutter_tem/routes/bottom_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -38,6 +39,10 @@ class AppRoutes {
       GoRoute(
         path: '/login',
         builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/google-map',
+        builder: (context, state) => const GoogleMapScreen(),
       ),
     ],
     errorBuilder: (context, state) {
