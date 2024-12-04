@@ -161,7 +161,12 @@ class _HomeScreenState extends State<HomeScreen>
                     itemBuilder: (context, index) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: AppColors.black.withOpacity(0.05),
+                          color: AppColors.white,
+                          border: Border.all(
+                            color: AppColors.black
+                                .withOpacity(0.15), // Border color
+                            width: 1.0, // Border width
+                          ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Column(
