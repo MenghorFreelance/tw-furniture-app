@@ -5,8 +5,10 @@ import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:flutter_tem/utils/theme/app_text.dart';
 
 class SearchWithCard extends StatelessWidget {
+  final GestureTapCallback onTap;
   const SearchWithCard({
     super.key,
+    required this.onTap,
   });
 
   @override
@@ -14,29 +16,32 @@ class SearchWithCard extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: Container(
-            height: 36,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-              color: AppColors.white,
-            ),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  AppImage.search,
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  "Looking for chairs, tables, or sofas?",
-                  style: AppText.title(
-                    fontSize: 12,
-                    color: AppColors.black.withOpacity(0.5),
+          child: GestureDetector(
+            onTap: onTap,
+            child: Container(
+              height: 36,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: AppColors.white,
+              ),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    AppImage.search,
                   ),
-                )
-              ],
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    "Looking for chairs, tables, or sofas?",
+                    style: AppText.title(
+                      fontSize: 12,
+                      color: AppColors.black.withOpacity(0.5),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

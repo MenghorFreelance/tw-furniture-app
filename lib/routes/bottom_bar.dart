@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tem/features/main/screens/browse_screen.dart';
-import 'package:flutter_tem/features/main/screens/google_map_screen.dart';
 import 'package:flutter_tem/features/main/screens/home_screen.dart';
-import 'package:flutter_tem/features/main/screens/search_screen.dart';
+import 'package:flutter_tem/features/main/screens/my_favorites_screen.dart';
+import 'package:flutter_tem/features/main/screens/product_list_screen.dart';
 import 'package:flutter_tem/features/order/screens/order_screen.dart';
 import 'package:flutter_tem/features/setting/screens/profile_screen.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
@@ -27,16 +27,16 @@ class _BottomBarState extends State<BottomBar> {
 
     switch (index) {
       case 0:
-        context.go('/home');
+        context.push('/home');
         break;
       case 1:
-        context.go('/browse');
+        context.push('/browse');
         break;
       case 2:
-        context.go('/order');
+        context.push('/order');
         break;
       case 3:
-        context.go('/profile');
+        context.push('/profile');
         break;
     }
   }

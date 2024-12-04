@@ -5,6 +5,7 @@ import 'package:flutter_tem/features/main/widgets/image_border_filter.dart';
 import 'package:flutter_tem/features/main/widgets/search_with_card.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:flutter_tem/utils/theme/app_text.dart';
+import 'package:go_router/go_router.dart';
 
 class BrowseScreen extends StatefulWidget {
   const BrowseScreen({super.key});
@@ -82,39 +83,42 @@ class _BrowseScreenState extends State<BrowseScreen>
       padding: const EdgeInsets.all(16),
       itemCount: itemsPro.length,
       itemBuilder: (context, index) {
-        return Container(
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const CashImage(
-                  width: 36,
-                  height: 36,
-                  borderRadius: 18,
-                  imageUrl: "https://picsum.photos/1200/1300?image=100",
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  "Sub-Category",
-                  style: AppText.title(
-                    fontSize: 12,
-                    color: AppColors.black.withOpacity(0.75),
+        return GestureDetector(
+          onTap: () => context.push("/product-list"),
+          child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CashImage(
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    imageUrl: "https://picsum.photos/1200/1300?image=100",
                   ),
-                ),
-                Text(
-                  "16 Items",
-                  style: AppText.title(
-                    fontSize: 12,
-                    color: AppColors.black.withOpacity(0.50),
+                  const SizedBox(
+                    height: 8,
                   ),
-                ),
-              ],
-            ));
+                  Text(
+                    "Sub-Category",
+                    style: AppText.title(
+                      fontSize: 12,
+                      color: AppColors.black.withOpacity(0.75),
+                    ),
+                  ),
+                  Text(
+                    "16 Items",
+                    style: AppText.title(
+                      fontSize: 12,
+                      color: AppColors.black.withOpacity(0.50),
+                    ),
+                  ),
+                ],
+              )),
+        );
       },
     );
   }
@@ -162,10 +166,12 @@ class _BrowseScreenState extends State<BrowseScreen>
             decoration: const BoxDecoration(
               gradient: AppColors.customGradient,
             ),
-            child: const SafeArea(
+            child: SafeArea(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: SearchWithCard(),
+                padding: const EdgeInsets.all(16.0),
+                child: SearchWithCard(
+                  onTap: () {},
+                ),
               ),
             ),
           ),
@@ -211,29 +217,32 @@ class _BrowseScreenState extends State<BrowseScreen>
                 ? const Center(child: CircularProgressIndicator())
                 : TabBarView(
                     controller: _tabController,
-                    children: _tabs.asMap().entries.map((entry) {
-                      final index = entry.key;
-                      final tab = entry.value;
-                      return index == _activeTabIndex
-                          ? FutureBuilder<Widget>(
-                              future: tab['content'],
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return const Loadingcenter();
-                                } else if (snapshot.hasError) {
-                                  return Center(
-                                      child: Text('Error: ${snapshot.error}'));
-                                } else if (snapshot.hasData) {
-                                  return snapshot.data!;
-                                } else {
-                                  return const Center(
-                                      child: Text('No data available'));
-                                }
-                              },
-                            )
-                          : const SizedBox();
-                    }).toList(),
+                    children: _tabs.asMap().entries.map(
+                      (entry) {
+                        final index = entry.key;
+                        final tab = entry.value;
+                        return index == _activeTabIndex
+                            ? FutureBuilder<Widget>(
+                                future: tab['content'],
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const Loadingcenter();
+                                  } else if (snapshot.hasError) {
+                                    return Center(
+                                        child:
+                                            Text('Error: ${snapshot.error}'));
+                                  } else if (snapshot.hasData) {
+                                    return snapshot.data!;
+                                  } else {
+                                    return const Center(
+                                        child: Text('No data available'));
+                                  }
+                                },
+                              )
+                            : const SizedBox();
+                      },
+                    ).toList(),
                   ),
           ),
         ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_tem/components/image/carousel_slider.dart';
 import 'package:flutter_tem/components/image/cash_image.dart';
 import 'package:flutter_tem/features/main/widgets/image_with_border.dart';
@@ -32,17 +33,22 @@ class _HomeScreenState extends State<HomeScreen>
               decoration: const BoxDecoration(
                 gradient: AppColors.customGradient, // Use the custom gradient
               ),
-              child: const SafeArea(
+              child: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SearchWithCard(),
-                      SizedBox(
+                      SearchWithCard(
+                        onTap: () {
+                          print("Hell");
+                          context.push('/search');
+                        },
+                      ),
+                      const SizedBox(
                         height: 16,
                       ),
-                      ImageCarouselSlider(),
+                      const ImageCarouselSlider(),
                     ],
                   ),
                 ),
@@ -87,29 +93,32 @@ class _HomeScreenState extends State<HomeScreen>
                         const NeverScrollableScrollPhysics(), // Disables scrolling
                     itemCount: items.length, // Total number of items
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.black.withOpacity(0.05),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const ImageWithBorder(),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "Living Room",
-                              style: AppText.title(
-                                fontSize: 12,
-                                color: AppColors.black.withOpacity(
-                                  0.75,
-                                ),
+                      return GestureDetector(
+                        onTap: () => context.push("/product-list"),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.black.withOpacity(0.05),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const ImageWithBorder(),
+                              const SizedBox(
+                                height: 8,
                               ),
-                            )
-                          ],
+                              Text(
+                                "Living Room",
+                                style: AppText.title(
+                                  fontSize: 12,
+                                  color: AppColors.black.withOpacity(
+                                    0.75,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -227,6 +236,22 @@ class _HomeScreenState extends State<HomeScreen>
                       );
                     },
                   ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  GestureDetector(
+                    onTap: () => context.push("/product-list"),
+                    child: Container(
+                      height: 48,
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColors.body,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Text("View all"),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -247,13 +272,16 @@ class _HomeScreenState extends State<HomeScreen>
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Text(
-                      "View All",
-                      style: AppText.title(
-                        fontSize: 12,
-                        color: AppColors.primary,
-                        underline: true,
-                        underlineColor: AppColors.primary,
+                    GestureDetector(
+                      onTap: () => context.push("/product-list"),
+                      child: Text(
+                        "View All",
+                        style: AppText.title(
+                          fontSize: 12,
+                          color: AppColors.primary,
+                          underline: true,
+                          underlineColor: AppColors.primary,
+                        ),
                       ),
                     ),
                   ],

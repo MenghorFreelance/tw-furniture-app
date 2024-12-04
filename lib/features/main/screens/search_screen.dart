@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tem/components/app_bar/app_bar.dart';
 import 'package:flutter_tem/components/image/cash_image.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_tem/utils/image/app_image.dart';
 import 'package:flutter_tem/utils/theme/app_colors.dart';
 import 'package:flutter_tem/utils/theme/app_text.dart';
@@ -39,19 +40,22 @@ class _SearchScreenState extends State<SearchScreen> {
           AppBarMain(
             child: Row(
               children: [
-                Container(
-                  width: 32,
-                  height: 32,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    color:
-                        AppColors.primary, // Set your desired background color
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: AppColors.white,
-                    size: 22,
+                GestureDetector(
+                  onTap: () => context.pop(),
+                  child: Container(
+                    width: 32,
+                    height: 32,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      color: AppColors
+                          .primary, // Set your desired background color
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: AppColors.white,
+                      size: 22,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -147,8 +151,10 @@ class _SearchScreenState extends State<SearchScreen> {
                   },
                   child: Text(
                     "Cancel",
-                    style:
-                        AppText.title(color: AppColors.white, underline: true),
+                    style: AppText.title(
+                      color: AppColors.white,
+                      underline: true,
+                    ),
                   ),
                 )
               ],
@@ -318,7 +324,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       return false;
                     },
                     child: ListView.builder(
-                      padding: const EdgeInsets.only(top: 8),
+                      padding: const EdgeInsets.only(top: 8, bottom: 16),
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(

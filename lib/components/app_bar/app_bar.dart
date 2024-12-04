@@ -15,6 +15,7 @@ class AppBarMain extends StatelessWidget {
         gradient: AppColors.customGradient,
       ),
       child: SafeArea(
+        bottom: false,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: child,
